@@ -102,6 +102,56 @@
         var text3Btn = $("#3pmBtn")
         var text4Btn = $("#4pmBtn")
         var text5Btn = $("#5pmBtn")
+
+        function renderText() {
+          text9.val(localStorage.getItem("Text9"))
+          text10.val(localStorage.getItem("Text10"))
+          text11.val(localStorage.getItem("Text11"))
+          text12.val(localStorage.getItem("Text12"))
+          text1.val(localStorage.getItem("Text1"))
+          text2.val(localStorage.getItem("Text2"))
+          text3.val(localStorage.getItem("Text3"))
+          text4.val(localStorage.getItem("Text4"))
+          text5.val(localStorage.getItem("Text5"))
+        }
+
+        renderText();
+
+        text9Btn.on("click", function() {
+          localStorage.setItem("Text9", text9.val())
+        })
+
+        text10Btn.on("click", function() {
+          localStorage.setItem("Text10", text10.val())
+        })
+
+        text11Btn.on("click", function() {
+          localStorage.setItem("Text11", text11.val())
+        })
+
+        text12Btn.on("click", function() {
+          localStorage.setItem("Text12", text12.val())
+        })
+
+        text1Btn.on("click", function() {
+          localStorage.setItem("Text1", text1.val())
+        })
+
+        text2Btn.on("click", function() {
+          localStorage.setItem("Text2", text2.val())
+        })
+
+        text3Btn.on("click", function() {
+          localStorage.setItem("Text3", text3.val())
+        })
+
+        text4Btn.on("click", function() {
+          localStorage.setItem("Text4", text4.val())
+        })
+
+        text5Btn.on("click", function() {
+          localStorage.setItem("Text5", text5.val())
+        })
         
       });
       </script>
