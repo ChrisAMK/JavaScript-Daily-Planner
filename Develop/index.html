@@ -32,47 +32,47 @@
       <!-- Timeblocks go here -->
       <div class="row" id="9am">
         <p class="hour col-1">9am</p>
-        <input type="text" class="col-10" id="9amText"></input>
+        <input type="text" class="col-10" id="9amText" time="9"></input>
         <button class="saveBtn col-1" id="9amBtn"><i class="far fa-save"></i></button>
       </div>
       <div class="row" id="10am">
         <p class="hour col-1">10am</p>
-        <input type="text" class="col-10" id="10amText"></input>
+        <input type="text" class="col-10" id="10amText" time="10"></input>
         <button class="saveBtn col-1" id="10amBtn"><i class="far fa-save"></i></button>
       </div>
       <div class="row" id="11am">
         <p class="hour col-1">11am</p>
-        <input type="text" class="col-10" id="11amText"></input>
+        <input type="text" class="col-10" id="11amText" time="11"></input>
         <button class="saveBtn col-1" id="11amBtn"><i class="far fa-save"></i></button>
       </div>
       <div class="row" id="12pm">
         <p class="hour col-1">12pm</p>
-        <input type="text" class="col-10" id="12pmText"></input>
+        <input type="text" class="col-10" id="12pmText" time="12"></input>
         <button class="saveBtn col-1" id="12pmBtn"><i class="far fa-save"></i></button>
       </div>
       <div class="row" id="1pm">
         <p class="hour col-1">1pm</p>
-        <input type="text" class="col-10" id="1pmText"></input>
+        <input type="text" class="col-10" id="1pmText" time="13"></input>
         <button class="saveBtn col-1" id="1pmBtn"><i class="far fa-save"></i></button>
       </div>
       <div class="row" id="2pm">
         <p class="hour col-1">2pm</p>
-        <input type="text" class="col-10" id="2pmText"></input>
+        <input type="text" class="col-10" id="2pmText" time="14"></input>
         <button class="saveBtn col-1" id="2pmBtn"><i class="far fa-save"></i></button>
       </div>
       <div class="row" id="3pm">
         <p class="hour col-1">3pm</p>
-        <input type="text" class="col-10" id="3pmText"></input>
+        <input type="text" class="col-10" id="3pmText" time="15"></input>
         <button class="saveBtn col-1" id="3pmBtn"><i class="far fa-save"></i></button>
       </div>
       <div class="row" id="4pm">
         <p class="hour col-1">4pm</p>
-        <input type="text" class="col-10" id="4pmText"></input>
+        <input type="text" class="col-10" id="4pmText" time="16"></input>
         <button class="saveBtn col-1" id="4pmBtn"><i class="far fa-save"></i></button>
       </div>
       <div class="row" id="5pm">
         <p class="hour col-1">5pm</p>
-        <input type="text" class="col-10" id="5pmText"></input>
+        <input type="text" class="col-10" id="5pmText" time="17"></input>
         <button class="saveBtn col-1" id="5pmBtn"><i class="far fa-save"></i></button>
       </div>
     </div>
@@ -82,7 +82,7 @@
     <script type="text/javascript">
 
       $(document).ready(function() {
-        
+        // Selecting all my HTML elements to simplify code
         var text9 = $("#9amText")
         var text10 = $("#10amText")
         var text11 = $("#11amText")
@@ -103,6 +103,7 @@
         var text4Btn = $("#4pmBtn")
         var text5Btn = $("#5pmBtn")
 
+        // This function Displays any Daily tasks that are stored in local storage, it will be called as the page is loaded
         function renderText() {
           text9.val(localStorage.getItem("Text9"))
           text10.val(localStorage.getItem("Text10"))
@@ -115,8 +116,29 @@
           text5.val(localStorage.getItem("Text5"))
         }
 
+        // Calling the renderText Function to  display set tasks
         renderText();
 
+        // Moment.js Applying the appropriate classes dependent on the time.
+        var now = parseInt(moment().format('HH'))
+  
+        $("input").each(function() {
+          var name = parseInt($(this).attr("time"))
+          if (name < now) {
+            $(this).addClass("past")
+          }
+          if (name > now) {
+            $(this).addClass("future")
+          }
+          if (name == now) {
+            $(this).addClass("present")
+        }})
+
+        // this code is to display the current day at the top of the screen.
+        var theday = moment().format('MMMM Do YYYY');
+        $("#currentDay").html(theday);
+
+        // User writes into the input element, when the corresponding save button is pressed, whatever text there is set to Local Storage.
         text9Btn.on("click", function() {
           localStorage.setItem("Text9", text9.val())
         })
@@ -152,7 +174,6 @@
         text5Btn.on("click", function() {
           localStorage.setItem("Text5", text5.val())
         })
-        
       });
       </script>
   </body>
