@@ -4,22 +4,6 @@ body {
   line-height: 1;
 }
 
-textaarea{
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
-}
-
-#textarea1{
-  
-  
-  width: 99%;
-  height: 99%;
-}
-
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -74,6 +58,18 @@ textaarea{
 }
 
 .saveBtn i:hover {
+  font-size: 20px;
+  transition: all .3s ease-in-out;
+}
+
+.clearBtn {
+  border-left: 1px solid black;
+  border-radius: 15px;
+  background-color: #06AED5;
+  color: white;
+}
+
+.clearBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
